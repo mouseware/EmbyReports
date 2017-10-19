@@ -202,7 +202,8 @@ namespace EmbyReports.Api.Data
 						HeaderMetadata.Audio,
 						HeaderMetadata.Subtitles,
 						HeaderMetadata.Trailers,
-						HeaderMetadata.Specials
+						HeaderMetadata.Specials,
+						HeaderMetadata.Studios
 					};
 
                 case ReportIncludeItemTypes.Book:
@@ -561,7 +562,10 @@ namespace EmbyReports.Api.Data
                 case HeaderMetadata.Genres:
                     option.Column = (i, r) => this.GetListAsString(i.Genres);
                     break;
-
+		
+		case HeaderMetadata.Studios:
+		   option.Column = (i, r) => this.GetListAsString(i.Studios.ToList());
+		   break;
             }
 
             option.Header.Name = GetLocalizedHeader(internalHeader);
